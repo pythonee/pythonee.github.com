@@ -4,7 +4,7 @@
   <title><![CDATA[Category: tech | My Octopress Blog]]></title>
   <link href="http://pythonee.github.com/blog/categories/tech/atom.xml" rel="self"/>
   <link href="http://pythonee.github.com/"/>
-  <updated>2012-08-11T15:35:58+08:00</updated>
+  <updated>2012-08-11T23:53:07+08:00</updated>
   <id>http://pythonee.github.com/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -15,20 +15,166 @@
   
   <entry>
     <title type="html"><![CDATA[Windows下如何使用github+octpress来写技术博客]]></title>
-    <link href="http://pythonee.github.com/blog/2012/08/10/hello-world/"/>
+    <link href="http://pythonee.github.com/blog/2012/08/10/how-to-octpress/"/>
     <updated>2012-08-10T23:50:00+08:00</updated>
-    <id>http://pythonee.github.com/blog/2012/08/10/hello-world</id>
-    <content type="html"><![CDATA[<p>申请github账号</p>
+    <id>http://pythonee.github.com/blog/2012/08/10/how-to-octpress</id>
+    <content type="html"><![CDATA[<h3>申请github账号</h3>
 
-<p>相关软件</p>
+<ul>
+<li>填写注册信息</li>
+<li>加入public key</li>
+<li>使用github page功能</li>
+</ul>
 
-<p>Msysgit、github for windows</p>
 
-<p>TortoiseGit</p>
+<p>github的page分为个人主页和项目主页两种</p>
 
-<p>Octpress</p>
+<h3>　相关软件</h3>
 
-<p>Ruby</p>
+<h4>git的安装</h4>
+
+<p>Msysgit、github for windows
+在Windows上使用git主要有两种方式<code>Msysgit+TortoiseGit</code>,现在github推出了<code>github for
+windows</code> 之后，我们还可以选择<code>github for windows</code></p>
+
+<h5>Github for windows</h5>
+
+<h6>下载</h6>
+
+<p>到<a href="http://windows.github.com/">这里</a>下载</p>
+
+<h5>Msysgit</h5>
+
+<h6>下载</h6>
+
+<p>到<a href="https://code.google.com/p/msysgit/">这里</a>下载</p>
+
+<h5>TortoiseGit</h5>
+
+<h6><a href="https://code.google.com/p/tortoisegit/">下载</a></h6>
+
+<blockquote><p>以Msysgit为后端，所以需要设置<code>git.exe</code>的路径</p>
+
+<p>ssh的关联需要用到<code>Pagent</code>和<code>Puttygen</code></p></blockquote>
+
+<h6>生成ssh key</h6>
+
+<pre><code>ssh-keygen -t rsa -C "pythonee@gmail.com"
+</code></pre>
+
+<h6>配置</h6>
+
+<p>将id_rsa拷贝到<code>C:\Documents and Settings\pythonee\.ssh</code></p>
+
+<p>配置账号信息</p>
+
+<pre><code>$ git config --global user.name "pythonee"
+$ git config --global user.email "pythonee@gmail.com"
+</code></pre>
+
+<p>然后通过下面的命令来判断是否可以通信</p>
+
+<pre><code>ssh -vT git@github.com
+</code></pre>
+
+<h4>Ruby</h4>
+
+<h5>下载RubyInstaller</h5>
+
+<p>Octpress需要1.9.2版本环境，这里安装Ruby 1.9.3，所以到<a href="http://rubyforge.org/projects/rubyinstaller/">这里</a>下载</p>
+
+<p>修改jekyll</p>
+
+<pre><code>self.content = File.read(File.join(base, name), :encoding =&gt; "utf-8")
+</code></pre>
+
+<h5>更新Gem</h5>
+
+<p>设置gem source</p>
+
+<pre><code>gem sources --remove http://rubygems.org
+gem sources -a http://ruby.taobao.org
+get sources -l //查看现有软件源
+gem update --system
+</code></pre>
+
+<h5>下载<a href="https://github.com/oneclick/rubyinstaller/downloads/">Devkit</a></h5>
+
+<pre><code>$cd path\to\DevKit
+$ruby dk.rb init
+$ruby dk.rb install
+$gem install rdiscount --platform=ruby
+</code></pre>
+
+<h4>Octpress</h4>
+
+<pre><code>git clone git://github.com/imathis/octopress.git octopress 
+cd path\to\Octpress
+</code></pre>
+
+<p>将octpress下的<code>Gemfile</code>的source改为</p>
+
+<pre><code>source "http://ruby.taobao.org"
+</code></pre>
+
+<p>安装</p>
+
+<pre><code>gem install bundler
+bundle install
+rake install
+</code></pre>
+
+<p>设置</p>
+
+<pre><code>rake setup_github_pages
+</code></pre>
+
+<p>当提示输入github url时，请输入
+<code>git@github.com:username/username.github.com.git</code>
+，当然需要替换<code>username</code>。</p>
+
+<p>然后这个命令</p>
+
+<ul>
+<li>会把myoctopress中原来clone时的代码库origin改名为octopress,并将刚刚输入git地址作为origin的代码库地址.</li>
+<li>会把当前分支名称从master改为source</li>
+<li>其它Url的设置还有deploy目录设置等</li>
+</ul>
+
+
+<p>写博客</p>
+
+<pre><code>rake new_post["title"]
+</code></pre>
+
+<p>发布博客</p>
+
+<pre><code>rake gen_deploy
+</code></pre>
+
+<h3>常见问题</h3>
+
+<h4>ssh问题</h4>
+
+<h4>中文问题</h4>
+
+<p>通过设置环境变量<code>LANG</code>和<code>LC_ALL</code>，具体为:</p>
+
+<pre><code>set LC_ALL = zh_CN.UTF-8
+set LANG=zh_CN.UTF-8
+</code></pre>
+
+<h4>Markdown语法</h4>
+
+<p><a href="http://wowubuntu.com/markdown/">参考一</a></p>
+
+<h3>参考资料</h3>
+
+<ul>
+<li><a href="http://shanewfx.github.com/blog/2012/02/16/bulid-blog-by-octopress/">搭Blog 学Git</a></li>
+<li><a href="http://netwjx.github.com/blog/2012/03/18/octopress-note/">Octopress 笔记</a></li>
+</ul>
+
 ]]></content>
   </entry>
   

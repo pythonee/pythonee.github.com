@@ -120,4 +120,5 @@ Octpress需要1.9.2版本环境，这里安装Ruby 1.9.3，所以到[这里](htt
 ### 参考资料
 * [搭Blog 学Git](http://shanewfx.github.com/blog/2012/02/16/bulid-blog-by-octopress/)
 * [Octopress 笔记](http://netwjx.github.com/blog/2012/03/18/octopress-note/)
+* [Windows 上使用 Github 手记](http://interjc.net/archives/2011/09/05/using-github-on-windows.html)
 

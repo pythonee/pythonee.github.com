@@ -4,7 +4,7 @@
   <title><![CDATA[Category: tech | My Octopress Blog]]></title>
   <link href="http://pythonee.github.com/blog/categories/tech/atom.xml" rel="self"/>
   <link href="http://pythonee.github.com/"/>
-  <updated>2012-08-11T23:53:07+08:00</updated>
+  <updated>2012-08-12T00:05:34+08:00</updated>
   <id>http://pythonee.github.com/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -150,6 +150,14 @@ rake install
 <p>发布博客</p>
 
 <pre><code>rake gen_deploy
+</code></pre>
+
+<p>同步source</p>
+
+<pre><code>git status
+git add .
+git commit -a -m 'comment'
+git push origin source
 </code></pre>
 
 <h3>常见问题</h3>

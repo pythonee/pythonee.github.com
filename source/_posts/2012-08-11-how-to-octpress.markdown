@@ -97,7 +97,13 @@ Octpress需要1.9.2版本环境，这里安装Ruby 1.9.3，所以到[这里](htt
     rake new_post["title"]
 发布博客
     rake gen_deploy
-
+也可以
+    git push --force --progress origin master:master
+同步source
+    git status
+    git add .
+    git commit -a -m 'comment'
+    git push --progress origin source:source
 
 ### 常见问题
 #### ssh问题

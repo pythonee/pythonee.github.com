@@ -244,12 +244,42 @@ git push --progress origin source:source
 
 <h4>ssh问题</h4>
 
+<pre><code>Agent admitted failure to sign using the key. Permission denied (publickey)
+...
+fatal: The remote end hung up unexpectedly
+</code></pre>
+
+<p>ssh 配置不对，打开git bash，重新生成ssh key,拷贝到<code>C:\Documents and Settings\pythonee\.ssh</code></p>
+
 <h4>中文问题</h4>
 
 <p>通过设置环境变量<code>LANG</code>和<code>LC_ALL</code>，具体为:</p>
 
 <pre><code>set LC_ALL = zh_CN.UTF-8
 set LANG=zh_CN.UTF-8
+</code></pre>
+
+<p>还有可能出现</p>
+
+<pre><code>convertible.rb:29:in `read_yaml': invalid byte sequence in GBK (ArgumentError)
+</code></pre>
+
+<p>这个问题需要修改jekyll的convertiable.rb文件，具体路径在<code>ruby\gems\1.9.1\gems\jekyll-0.11.2\lib\jekyll</code></p>
+
+<h4>rake版本错误</h4>
+
+<pre><code>rake aborted!
+You have already activated rake 0.9.2.2, but your Gemfile requires rake 0.9.2. U
+sing bundle exec may solve this.
+(See full trace by running task with --trace)
+</code></pre>
+
+<p>一种解决方案是将Gemfile里的改成<code>gem 'rake', '0.9.2.2'</code>，并重新执行<code>bundle install</code>
+；另一种方案可以执行<code>bundle exec rake</code>替代<code>rake</code>命令。</p>
+
+<h4>_config.yml配置中，冒号后面没有空格，语法错误。</h4>
+
+<pre><code>psych. Rb: 148: in ` parse ': peasants' t parse YAML at line 12 column 0 (Psych: : SyntaxError) 
 </code></pre>
 
 <h4>Markdown语法</h4>

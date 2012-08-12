@@ -30,14 +30,16 @@ windows` 之后，我们还可以选择`github for windows`
 ######下载
 到[这里](https://code.google.com/p/msysgit/)下载
 
+[Git 系列之二：Windows 下 Git 客户端的选择，及 msysGit 各种中文问题的解决
+](http://wangcongming.info/2010/07/windows-%E4%B8%8B-git-%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%9A%84%E9%80%89%E6%8B%A9%EF%BC%8C%E5%8F%8A-msysgit-%E5%90%84%E7%A7%8D%E4%B8%AD%E6%96%87%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3/)
+
+
 
 ##### TortoiseGit
 ###### [下载](https://code.google.com/p/tortoisegit/)
 
-> 以Msysgit为后端，所以需要设置`git.exe`的路径
-
-> ssh的关联需要用到`Pagent`和`Puttygen`
-
+* 以Msysgit为后端，所以需要设置`git.exe`的路径
+* ssh的关联需要用到`Pagent`和`Puttygen`
 
 ###### 生成ssh key
     ssh-keygen -t rsa -C "pythonee@gmail.com"
@@ -93,6 +95,16 @@ Octpress需要1.9.2版本环境，这里安装Ruby 1.9.3，所以到[这里](htt
 * 会把当前分支名称从master改为source
 * 其它Url的设置还有deploy目录设置等
 
+可能会出现如下提示
+    'My octopress page is coming soon
+    'hellip' 不是內部或外部命令...
+
+中间可能会在My Octopress Page is coming soon之后出现hellip;不是内部命令之类的
+错误, 可以不用管, 如果一定不想要出现这个错误可以修改myoctopress目录下的
+Rakefile, 搜My Octopress Page is coming soon, 在&hellip;前加个^(这个是Windows
+cmd的转义符), 如下
+    system "echo 'My Octopress Page is coming soon ^&hellip;' > index.html"
+
 写博客
     rake new_post["title"]
 发布博客
@@ -107,11 +119,33 @@ Octpress需要1.9.2版本环境，这里安装Ruby 1.9.3，所以到[这里](htt
 
 ### 常见问题
 #### ssh问题
+    Agent admitted failure to sign using the key. Permission denied (publickey)
+    ...
+    fatal: The remote end hung up unexpectedly
+
+ssh 配置不对，打开git bash，重新生成ssh key,拷贝到`C:\Documents and Settings\pythonee\.ssh`
+
 
 #### 中文问题
 通过设置环境变量`LANG`和`LC_ALL`，具体为:
     set LC_ALL = zh_CN.UTF-8
     set LANG=zh_CN.UTF-8
+
+还有可能出现
+    convertible.rb:29:in `read_yaml': invalid byte sequence in GBK (ArgumentError)
+这个问题需要修改jekyll的convertiable.rb文件，具体路径在`ruby\gems\1.9.1\gems\jekyll-0.11.2\lib\jekyll`
+
+#### rake版本错误
+    rake aborted!
+    You have already activated rake 0.9.2.2, but your Gemfile requires rake 0.9.2. U
+    sing bundle exec may solve this.
+    (See full trace by running task with --trace)
+
+一种解决方案是将Gemfile里的改成`gem 'rake', '0.9.2.2'`，并重新执行`bundle install`
+；另一种方案可以执行`bundle exec rake`替代`rake`命令。
+    
+#### _config.yml配置中，冒号后面没有空格，语法错误。 
+    psych. Rb: 148: in ` parse ': peasants' t parse YAML at line 12 column 0 (Psych: : SyntaxError) 
 
 #### Markdown语法
 [参考一](http://wowubuntu.com/markdown/)
@@ -121,4 +155,6 @@ Octpress需要1.9.2版本环境，这里安装Ruby 1.9.3，所以到[这里](htt
 * [搭Blog 学Git](http://shanewfx.github.com/blog/2012/02/16/bulid-blog-by-octopress/)
 * [Octopress 笔记](http://netwjx.github.com/blog/2012/03/18/octopress-note/)
 * [Windows 上使用 Github 手记](http://interjc.net/archives/2011/09/05/using-github-on-windows.html)
+* [使用Github Pages建独立博客](http://beiyuu.com/github-pages/)
+* [一些发布脚本](http://hopes4.me/blog/post-octopress-via-sh-script/)
 

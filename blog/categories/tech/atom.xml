@@ -4,7 +4,7 @@
   <title><![CDATA[Category: tech | Noodles的个人主页]]></title>
   <link href="http://pythonee.github.com/blog/categories/tech/atom.xml" rel="self"/>
   <link href="http://pythonee.github.com/"/>
-  <updated>2012-08-12T08:37:35+08:00</updated>
+  <updated>2012-08-12T08:50:58+08:00</updated>
   <id>http://pythonee.github.com/</id>
   <author>
     <name><![CDATA[pythonee]]></name>
@@ -48,6 +48,9 @@ windows</code> 之后，我们还可以选择<code>github for windows</code></p>
 <h6>下载</h6>
 
 <p>到<a href="https://code.google.com/p/msysgit/">这里</a>下载</p>
+
+<p><a href="http://wangcongming.info/2010/07/windows-%E4%B8%8B-git-%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%9A%84%E9%80%89%E6%8B%A9%EF%BC%8C%E5%8F%8A-msysgit-%E5%90%84%E7%A7%8D%E4%B8%AD%E6%96%87%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3/">Git 系列之二：Windows 下 Git 客户端的选择，及 msysGit 各种中文问题的解决
+</a></p>
 
 <h5>TortoiseGit</h5>
 

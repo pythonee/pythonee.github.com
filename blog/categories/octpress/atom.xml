@@ -4,7 +4,7 @@
   <title><![CDATA[Category: octpress | Noodles的个人主页]]></title>
   <link href="http://pythonee.github.com/blog/categories/octpress/atom.xml" rel="self"/>
   <link href="http://pythonee.github.com/"/>
-  <updated>2012-08-12T08:17:53+08:00</updated>
+  <updated>2012-08-12T08:37:35+08:00</updated>
   <id>http://pythonee.github.com/</id>
   <author>
     <name><![CDATA[pythonee]]></name>
@@ -18,7 +18,24 @@
     <link href="http://pythonee.github.com/blog/2012/08/11/octpress-hightlight-code/"/>
     <updated>2012-08-11T15:34:00+08:00</updated>
     <id>http://pythonee.github.com/blog/2012/08/11/octpress-hightlight-code</id>
-    <content type="html"><![CDATA[<p>过程</p>
+    <content type="html"><![CDATA[<pre><code>``` js Javascript Hello World 
+    alert('hello world');
+```
+</code></pre>
+
+<p>``` js Javascript Hello World</p>
+
+<pre><code>alert('hello world');
+</code></pre>
+
+<p>```</p>
+
+<p>而默认安装Octopress时对代码高亮还是不支持的, 还需要安装Python, 我没有使用
+ActivePython, 而是CPython, 安装好后应该会有c:\Windows\System32\python27.dll.</p>
+
+<p>但是现在还可能会出现Could not open library’.dll’的问题.</p>
+
+<p>具体修改请参考<a href="http://netwjx.github.com/blog/2012/04/21/using-code-in-octopress/">在Octopress中使用代码高亮</a></p>
 ]]></content>
   </entry>
   

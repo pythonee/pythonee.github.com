@@ -9,8 +9,9 @@
   <meta name="author" content="pythonee">
 
   
-  <meta name="description" content="过程
-">
+  <meta name="description" content="``` js Javascript Hello World alert('hello world');
+``` Javascript Hello World 1
+alert(&#39;hello world&#39;); 而默认安装Octopress时对代码高亮还是不支持的, &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -94,7 +95,22 @@
   </header>
 
 
-  <div class="entry-content"><p>过程</p>
+  <div class="entry-content"><pre><code>``` js Javascript Hello World 
+    alert('hello world');
+```
+</code></pre>
+
+<figure class='code'><figcaption><span>Javascript Hello World </span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;hello world&#39;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>而默认安装Octopress时对代码高亮还是不支持的, 还需要安装Python, 我没有使用
+ActivePython, 而是CPython, 安装好后应该会有c:\Windows\System32\python27.dll.</p>
+
+<p>但是现在还可能会出现Could not open library’.dll’的问题.</p>
+
+<p>具体修改请参考<a href="http://netwjx.github.com/blog/2012/04/21/using-code-in-octopress/">在Octopress中使用代码高亮</a></p>
 </div>
   
   
@@ -165,9 +181,11 @@ windows</code> 之后，我们还可以选择<code>github for windows</code></p>
 
 <h6><a href="https://code.google.com/p/tortoisegit/">下载</a></h6>
 
-<blockquote><p>以Msysgit为后端，所以需要设置<code>git.exe</code>的路径</p>
+<ul>
+<li>以Msysgit为后端，所以需要设置<code>git.exe</code>的路径</li>
+<li>ssh的关联需要用到<code>Pagent</code>和<code>Puttygen</code></li>
+</ul>
 
-<p>ssh的关联需要用到<code>Pagent</code>和<code>Puttygen</code></p></blockquote>
 
 <h6>生成ssh key</h6>
 
@@ -253,6 +271,20 @@ rake install
 <li>其它Url的设置还有deploy目录设置等</li>
 </ul>
 
+
+<p>可能会出现如下提示</p>
+
+<pre><code>'My octopress page is coming soon
+'hellip' 不是內部或外部命令...
+</code></pre>
+
+<p>中间可能会在My Octopress Page is coming soon之后出现hellip;不是内部命令之类的
+错误, 可以不用管, 如果一定不想要出现这个错误可以修改myoctopress目录下的
+Rakefile, 搜My Octopress Page is coming soon, 在&hellip;前加个<sup>(这个是Windows</sup>
+cmd的转义符), 如下</p>
+
+<pre><code>system "echo 'My Octopress Page is coming soon ^&amp;hellip;' &gt; index.html"
+</code></pre>
 
 <p>写博客</p>
 

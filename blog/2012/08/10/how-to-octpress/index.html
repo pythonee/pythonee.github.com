@@ -165,10 +165,23 @@ $ git config --global user.email "pythonee@gmail.com"
 
 <p>Octpress需要1.9.2版本环境，这里安装Ruby 1.9.3，所以到<a href="http://rubyforge.org/projects/rubyinstaller/">这里</a>下载</p>
 
-<p>修改jekyll</p>
+<p>修改jekyll, jekyll在github上会遇到中文编码问题，需要修改两个地方</p>
 
-<pre><code>self.content = File.read(File.join(base, name), :encoding =&gt; "utf-8")
-</code></pre>
+<ul>
+<li><p>convertible.rb
+  cd /path/to/ruby  // 先到ruby的安装目录
+  cd lib/ruby/gems/1.9.1/gems/jekyll-0.11.2/lib/jekyll/convertible.rb
+  #替换
+  #self.content = File.read(File.join(base, name))
+  self.content = File.read(File.join(base, name), :encoding => &#8220;utf-8&#8221;)</p></li>
+<li><p>include.rb
+  cd /path/to/ruby  // 先到ruby的安装目录
+  cd lib/ruby/gems/1.9.1/gems/jekyll-0.11.2/lib/jekyll/tags/include.rb
+  #替换
+  #source = File.read(@file)
+  source = File.read(@file, :encoding => &#8220;utf-8&#8221;)</p></li>
+</ul>
+
 
 <h5>更新Gem</h5>
 
@@ -406,7 +419,7 @@ sing bundle exec may solve this.
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - pythonee -
+  Copyright &copy; 2013 - pythonee -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

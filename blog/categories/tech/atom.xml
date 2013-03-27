@@ -4,7 +4,7 @@
   <title><![CDATA[Category: tech | Noodles的个人主页]]></title>
   <link href="http://pythonee.github.com/blog/categories/tech/atom.xml" rel="self"/>
   <link href="http://pythonee.github.com/"/>
-  <updated>2012-08-12T09:11:18+08:00</updated>
+  <updated>2013-03-27T20:39:43+08:00</updated>
   <id>http://pythonee.github.com/</id>
   <author>
     <name><![CDATA[pythonee]]></name>
@@ -88,10 +88,23 @@ $ git config --global user.email "pythonee@gmail.com"
 
 <p>Octpress需要1.9.2版本环境，这里安装Ruby 1.9.3，所以到<a href="http://rubyforge.org/projects/rubyinstaller/">这里</a>下载</p>
 
-<p>修改jekyll</p>
+<p>修改jekyll, jekyll在github上会遇到中文编码问题，需要修改两个地方</p>
 
-<pre><code>self.content = File.read(File.join(base, name), :encoding =&gt; "utf-8")
-</code></pre>
+<ul>
+<li><p>convertible.rb
+  cd /path/to/ruby  // 先到ruby的安装目录
+  cd lib/ruby/gems/1.9.1/gems/jekyll-0.11.2/lib/jekyll/convertible.rb
+  #替换
+  #self.content = File.read(File.join(base, name))
+  self.content = File.read(File.join(base, name), :encoding => "utf-8")</p></li>
+<li><p>include.rb
+  cd /path/to/ruby  // 先到ruby的安装目录
+  cd lib/ruby/gems/1.9.1/gems/jekyll-0.11.2/lib/jekyll/tags/include.rb
+  #替换
+  #source = File.read(@file)
+  source = File.read(@file, :encoding => "utf-8")</p></li>
+</ul>
+
 
 <h5>更新Gem</h5>
 

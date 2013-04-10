@@ -57,8 +57,22 @@ windows` 之后，我们还可以选择`github for windows`
 ##### 下载RubyInstaller
 Octpress需要1.9.2版本环境，这里安装Ruby 1.9.3，所以到[这里](http://rubyforge.org/projects/rubyinstaller/ )下载
 
-修改jekyll
+修改jekyll, jekyll在github上会遇到中文编码问题，需要修改两个地方
+
+`convertible.rb`
+    cd /path/to/ruby  // 先到ruby的安装目录
+    cd lib/ruby/gems/1.9.1/gems/jekyll-0.11.2/lib/jekyll/convertible.rb 
+    #替换
+    #self.content = File.read(File.join(base, name))
     self.content = File.read(File.join(base, name), :encoding => "utf-8")
+
+`include.rb`
+    cd /path/to/ruby  // 先到ruby的安装目录
+    cd lib/ruby/gems/1.9.1/gems/jekyll-0.11.2/lib/jekyll/tags/include.rb 
+    #替换
+    #source = File.read(@file)
+    source = File.read(@file, :encoding => "utf-8")
+
 
 ##### 更新Gem
 设置gem source
